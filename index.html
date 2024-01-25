@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>SweaterWeather</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <header>
+        <div class="header-wrapper">
+            <div class="toggle-units">
+                <div class="indicator">°C</div>
+            </div>
+            <div class="search-wrapper">
+                <input class="search-box" type="text" placeholder=" Search location...">
+                <button class="search-button">
+                    <svg fill="191923" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960"
+                        width="24">
+                        <path
+                            d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z" />
+                    </svg>
+                </button>
+
+                <ul class="suggestions">
+                </ul>
+            </div>
+        </div>
+
+    </header>
+    <main>
+        <div class="weather-wrapper">
+            <div class="left-weather-wrapper">
+                <div class="localization-info">
+                    <p class="city-region">
+                    <p class="country"></p>
+                </div>
+                <h1 class="temperature"></h1>
+                <img class="weather-icon" src="../src/assets/weather/snow.png" alt="">
+                <h2 class="condition"></h2>
+                <p class="localTime"></p>
+            </div>
+            <div class="right-weather-wrapper">
+                <div class="weather-info-wrapper">
+                    <div class="wind-speed-wrapper weather-details">
+                        <div class="wind-speed-icon"></div>
+                        <label class="wind-speed-label">Wind Speed</label>
+                        <p class="wind-speed"></p>
+                    </div>
+                    <div class="feels-like-wrapper weather-details">
+                        <div class="feelslike-icon"></div>
+                        <label class="feelslike-label">Feels like </label>
+                        <p class="feels-like"></p>
+                    </div>
+                    <div class="wind-direction-wrapper weather-details">
+                        <div class="wind-direction-icon"></div>
+                        <label class="wind-direction-label">Wind Direction</label>
+                        <p class="wind-direction"></p>
+                    </div>
+                    <div class="wind-speed-wrapper weather-details">
+                        <div class="humidity-icon"></div>
+                        <label class="humidity-label">Humidity</label>
+                        <p class="humidity"></p>
+                    </div>
+                    <div class="max-temp-wrapper weather-details">
+                        <div class="max-temp-icon"></div>
+                        <label class="max-temp-label">Max Temp</label>
+                        <p class="max-temp"></p>
+                    </div>
+                    <div class="min-temp-wrapper weather-details">
+                        <div class="min-temp-icon"></div>
+                        <label class="min-temp-label">Min Temp</label>
+                        <p class="min-temp"></p>
+                    </div>
+                    <div class="chance-rain-wrapper weather-details">
+                        <div class="chance-rain-icon"></div>
+                        <label class="chance-rain-label">Chance of Rain</label>
+                        <p class="chance-rain"></p>
+                    </div>
+                </div>
+                <div class="forecast-info">
+                    
+                </div>
+            </div>
+    </main>
+
+<script defer src="main.js"></script></body>
+
+</html>
