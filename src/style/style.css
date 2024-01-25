@@ -17,22 +17,18 @@
   --clr-grey: #575757;
   --clr-white: #f3f2f3;
   --clr-font: #fcfffe;
-  --clr-violet: #DCCCFF;
+  --clr-violet: #eeeeef;
   --clr-btn: #AEADF0;
   --clr-btn-hover: #a5a4cc;
   --clr--toggle--dark: #143642;
   --clr--toggle--light: #B2DBBF;
 }
 
-*,
-**::before,
-*::after {
-  box-sizing: border-box;
-}
-
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
@@ -94,8 +90,13 @@ select {
   }
 }
 
+main {
+  margin: 2rem ;
+}
+
 .search-wrapper {
   display: flex;
+  padding-left: 1rem;
 }
 
 .search-box {
@@ -124,10 +125,7 @@ select {
 .weather-wrapper {
   display: grid;
   text-align: center;
-  justify-items: center;
-  align-items: center;
-  margin-inline: 3rem;
-  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
 }
 
 .localization-info, .localTime{
@@ -147,24 +145,20 @@ select {
   text-transform: capitalize;
 }
 
-.left-weather-wrapper, .right-weather-wrapper{
+.left-weather-wrapper, .weather-info-wrapper, .forecast-info-wrapper {
   background-color: var(--clr-wrappers);
   padding: 3rem;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   border-radius: .5rem;
 }
 
+.left-weather-wrapper img {
+  margin-inline: auto;
+}
+
 .right-weather-wrapper {
   font-size: var(--fs-400);
   font-weight: var(--fw-light);
-}
-
-.weather-details {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  align-items: center;
-  column-gap: 0.2rem;
-  padding: 0.5rem;
 }
 
 .feelslike-icon {
@@ -208,7 +202,7 @@ select {
 .toggle-units {
   position: relative;
   display: block;
-  width: 80px;
+  min-width: 80px;
   border-radius: 100vh;
   background-color: var(--clr--toggle--dark);
   cursor: pointer;
@@ -249,10 +243,38 @@ select {
   transform: translateY(-50%);
 }
 
-.weather-icon {
-  margin-bottom: 2rem;
-}
-
 label + p {
   font-weight: var(--fw-bold);
+}
+
+.forecast-icon {
+  width: 60px;
+} 
+
+.weather-details, .day {
+  display: grid;
+  justify-items: center;
+}
+
+.weather-info-wrapper, .forecast-info-wrapper {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+
+.weather-info-wrapper > * {
+  flex: 1;
+}
+
+@media (min-width: 45em) {
+  .weather-wrapper {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .left-weather-wrapper {
+      grid-row: span 2;
+  }
+
 }

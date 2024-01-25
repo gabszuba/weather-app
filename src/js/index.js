@@ -1,6 +1,6 @@
 import "../style/style.css";
 import { parse, format } from "date-fns";
-import { updateWindIcon, updateWeatherIcon } from "./utils";
+import { updateWindIcon, updateWeatherIcon, updateForecast } from "./utils";
 import getWeatherData from "./dataController";
 
 const weatherView = (() => {
@@ -16,25 +16,37 @@ const weatherView = (() => {
     const windSpeedElement = document.querySelector(".wind-speed");
     const maxTempElement = document.querySelector(".max-temp");
     const minTempElement = document.querySelector(".min-temp");
+    const forecastAvgTempElements = [...document.querySelectorAll(".forecast-avg-temp")];
+    const forecastMinTempElements = [...document.querySelectorAll(".forecast-min-temp")];
+    const forecastMaxTempElements = [...document.querySelectorAll(".forecast-max-temp")];
+    const { forecast } = weatherDataObject;
 
-    unitsIndicator.textContent = toggleUnits.classList.contains("active")
-      ? "°F"
-      : "°C";
-    temperatureElement.textContent = toggleUnits.classList.contains("active")
-      ? `${weatherDataObject.tempF}°F`
-      : `${weatherDataObject.tempC}°C`;
-    feelsLikeElement.textContent = toggleUnits.classList.contains("active")
-      ? `${weatherDataObject.feelsLikeF}°F`
-      : `${weatherDataObject.feelsLikeC}°C`;
-    maxTempElement.textContent = toggleUnits.classList.contains("active")
-      ? `${weatherDataObject.maxTempF}°F`
-      : `${weatherDataObject.maxTempC}°C`;
-    minTempElement.textContent = toggleUnits.classList.contains("active")
-      ? `${weatherDataObject.minTempF}°F`
-      : `${weatherDataObject.minTempC}°C`;
-    windSpeedElement.textContent = toggleUnits.classList.contains("active")
-      ? `${weatherDataObject.windMph} (Mph)`
-      : `${weatherDataObject.windKph} (Kph)`;
+    if (toggleUnits.classList.contains("active")) {
+      unitsIndicator.textContent = "°F";
+      temperatureElement.textContent = `${weatherDataObject.tempF}°F`;
+      feelsLikeElement.textContent = `${weatherDataObject.feelsLikeF}°F`;
+      maxTempElement.textContent = `${weatherDataObject.maxTempF}°F`;
+      minTempElement.textContent = `${weatherDataObject.minTempF}°F`;
+      windSpeedElement.textContent = `${weatherDataObject.windMph} (Mph)`;
+      forecast.forEach((day, index) => {
+        forecastAvgTempElements[index].textContent = `${day.avgTempC}°F `;
+        forecastMinTempElements[index].textContent = `Min: ${day.minTempF}°F`;
+        forecastMaxTempElements[index].textContent = `Max: ${day.maxTempF}°F`;
+      });
+      return;
+    }
+
+    unitsIndicator.textContent = "°C";
+    temperatureElement.textContent = `${weatherDataObject.tempC}°C`;
+    feelsLikeElement.textContent = `${weatherDataObject.feelsLikeC}°C`;
+    maxTempElement.textContent = `${weatherDataObject.maxTempC}°C`;
+    minTempElement.textContent = `${weatherDataObject.minTempC}°C`;
+    windSpeedElement.textContent = `${weatherDataObject.windKph} (Kph)`;
+    forecast.forEach((day, index) => {
+      forecastAvgTempElements[index].textContent = `${day.avgTempF}°C`;
+      forecastMinTempElements[index].textContent = `Min: ${day.minTempC}°C`;
+      forecastMaxTempElements[index].textContent = `Max: ${day.maxTempC}°C`;
+    });
   }
 
   async function renderWeatherData() {
@@ -51,7 +63,7 @@ const weatherView = (() => {
       "yyyy-MM-dd HH:mm",
       new Date(),
     );
-    const formattedDate = format(inputDate, "dd MMMM yyyy HH.mm");
+    const formattedDate = format(inputDate, "dd MMMM yyyy HH:mm");
 
     regionElement.textContent = `${weatherDataObject.city}, ${weatherDataObject.region}`;
     countryElement.textContent = weatherDataObject.country;
@@ -61,11 +73,12 @@ const weatherView = (() => {
     humidityElement.textContent = `${weatherDataObject.humidity}%`;
     rainElement.textContent = `${weatherDataObject.chanceOfRain}%`;
 
-    updateTemperatureElements(
-      weatherDataObject,
-    );
+    updateTemperatureElements();
 
-    updateWeatherIcon(weatherDataObject.code, weatherDataObject.isDay);
+    updateForecast(weatherDataObject.forecast);
+    const weatherIcon = document.querySelector(".weather-icon");
+    const imgSource = updateWeatherIcon(weatherDataObject.code, weatherDataObject.isDay);
+    weatherIcon.src = `../src/assets/weather/${imgSource}.svg`;
     updateWindIcon(weatherDataObject.windDirection);
   }
 
@@ -75,7 +88,7 @@ const weatherView = (() => {
   }
 
   async function changeUnits() {
-    updateTemperatureElements(weatherDataObject, toggleUnits.querySelector(".indicator"));
+    updateTemperatureElements();
   }
 
   function handleSearchEvent() {

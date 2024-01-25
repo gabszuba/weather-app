@@ -1,3 +1,5 @@
+import { parse, format } from "date-fns";
+
 // Function to update the wind direction icon
 function updateWindIcon(windDirection) {
   const windIconElement = document.querySelector(".wind-direction-icon");
@@ -26,16 +28,11 @@ function updateWindIcon(windDirection) {
 }
 
 function updateWeatherIcon(code, isDay) {
-  const weatherIcon = document.querySelector(".weather-icon");
-  let imgSource;
-
   switch (code) {
     case 1000:
-      imgSource = isDay === 1 ? "sunny" : "clear";
-      break;
+      return isDay === 1 ? "sunny" : "clear";
     case 1003:
-      imgSource = isDay === 1 ? "partly-cloudy-day" : "cloudy-night";
-      break;
+      return isDay === 1 ? "partly-cloudy-day" : "cloudy-night";
     case 1006:
     case 1009:
     case 1264:
@@ -49,8 +46,7 @@ function updateWeatherIcon(code, isDay) {
     case 1207:
     case 1204:
     case 1069:
-      imgSource = "cloud";
-      break;
+      return "cloud";
     case 1240:
     case 1198:
     case 1186:
@@ -62,8 +58,7 @@ function updateWeatherIcon(code, isDay) {
     case 1150:
     case 1072:
     case 1063:
-      imgSource = isDay === 1 ? "rain-cloud-day" : "rain-cloud-night";
-      break;
+      return isDay === 1 ? "rain-cloud-day" : "rain-cloud-night";
     case 1282:
     case 1279:
     case 1258:
@@ -77,28 +72,39 @@ function updateWeatherIcon(code, isDay) {
     case 1066:
     case 1117:
     case 1225:
-      imgSource = "snow";
-      break;
-
+      return "snow";
     case 1276:
     case 1273:
     case 1087:
-      imgSource = "storm";
-      break;
+      return "storm";
     case 1243:
     case 1201:
     case 1192:
     case 1189:
     case 1246:
     case 1195:
-      imgSource = "rain";
-      break;
+      return "rain";
     default:
-      imgSource = "thermometer";
-      break;
+      return "cloud";
   }
-
-  weatherIcon.src = `../src/assets/weather/${imgSource}.svg`;
 }
 
-export { updateWindIcon, updateWeatherIcon };
+function updateForecast(forecast) {
+  console.log(forecast);
+  const forecastDateElements = [...document.querySelectorAll(".forecast-date")];
+  const forecastIconsElements = [...document.querySelectorAll(".forecast-icon")];
+
+  forecast.forEach((day, index) => {
+    const inputDate = parse(
+      day.date,
+      "yyyy-MM-dd",
+      new Date(),
+    );
+    const formattedDate = format(inputDate, "dd MMMM");
+    forecastDateElements[index].textContent = formattedDate;
+    const imgSource = updateWeatherIcon(day.code, 1);
+    forecastIconsElements[index].src = `../src/assets/weather/${imgSource}.svg`;
+  });
+}
+
+export { updateWindIcon, updateWeatherIcon, updateForecast };
