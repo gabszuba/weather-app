@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,700&display=swap');
+:root {
+  --ff-sans: 'Nunito Sans', sans-serif;
+
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-bold: 700;
+
+  --fs-400: 1rem;
+  --fs-500: 1.25rem;
+  --fs-600: 1.625rem;
+  --fs-900: 2.5rem;
+  --fs-1000: 5rem;
+
+  --clr-background:  rgba(68,68,121,1);
+  --clr-wrappers:  #313359;
+  --clr-grey: #575757;
+  --clr-white: #f3f2f3;
+  --clr-font: #fcfffe;
+  --clr-violet: #DCCCFF;
+  --clr-btn: #AEADF0;
+  --clr-btn-hover: #a5a4cc;
+  --clr--toggle--dark: #143642;
+  --clr--toggle--light: #B2DBBF;
+}
+
+*,
+**::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul {
+  list-style: none;
+}
+
+html,
+body {
+  height: 100%;
+}
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  /* min-height: 100vh; */
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  font-family: var(--ff-sans);
+  background: var(--clr-background);
+  color: var(--clr-font);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+
+/* Make images easier to work with */
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.search-wrapper {
+  display: flex;
+}
+
+.search-box {
+  outline: none;
+  background-color: var(--clr-violet);
+  padding: 0.5em 0.7em;
+  border-radius: 0.5rem 0 0 0.5rem;
+  color: var(--clr-grey);
+  border: none;
+  font-size: var(--fs-400);
+  width: 100%;
+}
+
+.search-button {
+  border: none;
+  padding: 0.5em 0.7em;
+  border-radius: 0 0.5rem 0.5rem 0;
+  background-color: var(--clr-btn);
+  cursor: pointer;
+}
+
+.search-button:hover {
+  background-color: var(--clr-btn-hover);
+}
+
+.weather-wrapper {
+  display: grid;
+  text-align: center;
+  justify-items: center;
+  align-items: center;
+  margin-inline: 3rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.localization-info, .localTime{
+  font-weight: var(--fw-light);
+  font-size: var(--fs-400);
+  color: var(--clr-white);
+}
+
+.temperature {
+  font-size: var(--fs-1000);
+  font-weight: var(--fw-bold);
+}
+
+.condition {
+  font-size: var(--fs-600);
+  font-weight: var(--fw-bold);
+  text-transform: capitalize;
+}
+
+.left-weather-wrapper, .right-weather-wrapper{
+  background-color: var(--clr-wrappers);
+  padding: 3rem;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: .5rem;
+}
+
+.right-weather-wrapper {
+  font-size: var(--fs-400);
+  font-weight: var(--fw-light);
+}
+
+.weather-details {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  column-gap: 0.2rem;
+  padding: 0.5rem;
+}
+
+.feelslike-icon {
+  background-image: url('../assets/thermometer.svg');
+}
+
+.wind-speed-icon {
+  background-image: url('../assets/wind-speed.svg');
+}
+
+.max-temp-icon {
+  background-image: url('../assets/max-temp.svg');
+}
+
+.humidity-icon {
+  background-image: url('../assets/humidity.svg');
+}
+
+.min-temp-icon {
+  background-image: url('../assets/min-temp.svg');
+}
+
+.chance-rain-icon {
+  background-image: url('../assets/change-rain.svg');
+}
+
+.max-temp-icon, .chance-rain-icon, .min-temp-icon,  .wind-direction-icon, .humidity-icon, .feelslike-icon, .wind-speed-icon{
+  width: 36px;
+  height: 36px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  grid-row: span 2;
+}
+
+.header-wrapper {
+  display: flex;
+  margin: 2rem;
+  justify-content: space-between;
+}
+
+.toggle-units {
+  position: relative;
+  display: block;
+  width: 80px;
+  border-radius: 100vh;
+  background-color: var(--clr--toggle--dark);
+  cursor: pointer;
+}
+
+.toggle-units .indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 100%;
+  border-radius: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--clr--toggle--dark);
+  font-weight: var(--fw-bold);
+  background: var(--clr--toggle--light);
+  transform: scale(0.9);
+  transition: 0.5s ease; 
+}
+
+.toggle-units.active .indicator {
+  left: 40px;
+  color: var(--clr--toggle--light);
+  background: var(--clr--toggle--dark);
+}
+
+.toggle-units.active {
+  background: var(--clr--toggle--light);
+} 
+
+.units-label {
+  position: absolute;
+  top: 50%;
+  font-weight: var(--fw-bold);
+  left: 45px;
+  transform: translateY(-50%);
+}
+
+.weather-icon {
+  margin-bottom: 2rem;
+}
+
+label + p {
+  font-weight: var(--fw-bold);
+}
