@@ -90,7 +90,6 @@ function updateWeatherIcon(code, isDay) {
 }
 
 function updateForecast(forecast) {
-  console.log(forecast);
   const forecastDateElements = [...document.querySelectorAll(".forecast-date")];
   const forecastIconsElements = [...document.querySelectorAll(".forecast-icon")];
 

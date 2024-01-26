@@ -49,7 +49,23 @@ const weatherView = (() => {
     });
   }
 
+  function displayErrorMessage() {
+    const header = document.querySelector("header");
+    const errorDiv = document.createElement("div");
+    errorDiv.classList.add("error-msg");
+    errorDiv.textContent = "City not found, please insert a valid paramether, such as latitude or longitude, city name, US, UK and Canada postcode";
+    header.appendChild(errorDiv);
+  }
+
+  function removeErrorMessage() {
+    const errorMsg = document.querySelector(".error-msg");
+    if (errorMsg) {
+      errorMsg.remove();
+    }
+  }
   async function renderWeatherData() {
+    removeErrorMessage();
+
     const regionElement = document.querySelector(".city-region");
     const countryElement = document.querySelector(".country");
     const localTimeElement = document.querySelector(".localTime");
@@ -83,11 +99,23 @@ const weatherView = (() => {
   }
 
   async function setWeatherDataObject(localization) {
-    weatherDataObject = await getWeatherData(localization);
-    renderWeatherData();
+    const main = document.querySelector("main");
+    const spin = document.querySelector(".square-spin");
+    main.style.display = "none";
+    spin.style.display = "block";
+
+    try {
+      weatherDataObject = await getWeatherData(localization);
+      await renderWeatherData();
+      main.style.display = "block";
+    } catch (error) {
+      displayErrorMessage();
+    } finally {
+      spin.style.display = "none";
+    }
   }
 
-  async function changeUnits() {
+  function changeUnits() {
     updateTemperatureElements();
   }
 

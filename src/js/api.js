@@ -8,8 +8,7 @@ async function fetchCurrentWeatherData(localization) {
     const responseJson = await response.json();
     return responseJson;
   } catch (error) {
-    console.error("Error fetching weather data:", error);
-    throw error;
+    return error.message;
   }
 }
 

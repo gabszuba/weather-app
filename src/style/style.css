@@ -22,6 +22,7 @@
   --clr-btn-hover: #a5a4cc;
   --clr--toggle--dark: #143642;
   --clr--toggle--light: #B2DBBF;
+  --clr-red: #ea8289;
 }
 
 * {
@@ -268,6 +269,15 @@ label + p {
   flex: 1;
 }
 
+.error-msg {
+  color: var(--clr-red);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-500);
+  text-align: right;
+  margin-left: auto;
+  padding-inline: 2em;
+}
+
 @media (min-width: 45em) {
   .weather-wrapper {
     grid-template-columns: 1fr 2fr;
@@ -277,4 +287,34 @@ label + p {
       grid-row: span 2;
   }
 
+}
+
+.square-spin {
+  --size: 35px;
+  --stroke-width: calc(var(--size) / 6);
+  --color: currentColor;
+  --animation-timing-function: linear;
+  --animation-duration: 2s;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: var(--size);
+  height: var(--size);
+  background-image:
+    radial-gradient(circle at var(--stroke-width) var(--stroke-width), var(--color) 0%, var(--color) var(--stroke-width), transparent var(--stroke-width), transparent 100%),
+    radial-gradient(circle at calc(100% - var(--stroke-width)) var(--stroke-width), var(--color) 0%, var(--color) var(--stroke-width), transparent var(--stroke-width), transparent 100%),
+    radial-gradient(circle at calc(100% - var(--stroke-width)) calc(100% - var(--stroke-width)), var(--color) 0%, var(--color) var(--stroke-width), transparent var(--stroke-width), transparent 100%),
+    radial-gradient(circle at var(--stroke-width) calc(100% - var(--stroke-width)), var(--color) 0%, var(--color) var(--stroke-width), transparent var(--stroke-width), transparent 100%);
+  animation: var(--animation-timing-function) var(--animation-duration) infinite square-spin;
+}
+
+@keyframes square-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
