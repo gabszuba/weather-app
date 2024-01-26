@@ -23,7 +23,7 @@ function updateWindIcon(windDirection) {
     NNW: "north_weast",
   };
 
-  const svgPath = `../src/assets/wind/${windDirectionMap[windDirection]}.svg`;
+  const svgPath = `./assets/wind/${windDirectionMap[windDirection]}.svg`;
   windIconElement.style.backgroundImage = `url('${svgPath}')`;
 }
 
@@ -102,7 +102,7 @@ function updateForecast(forecast) {
     const formattedDate = format(inputDate, "dd MMMM");
     forecastDateElements[index].textContent = formattedDate;
     const imgSource = updateWeatherIcon(day.code, 1);
-    forecastIconsElements[index].src = `../src/assets/weather/${imgSource}.svg`;
+    forecastIconsElements[index].src = `./assets/weather/${imgSource}.svg`;
   });
 }
 
