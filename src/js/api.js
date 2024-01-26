@@ -56,4 +56,16 @@ function processCurrentWeatherData(data) {
   return processedData;
 }
 
-export { fetchCurrentWeatherData, processCurrentWeatherData };
+async function fetchUserCity() {
+  try {
+    const response = await fetch(
+      "https://geo.ipify.org/api/v2/country,city?apiKey=at_KbTNQGg4YshyxpdV6DpVF0WGtC9nU&ipAddress=",
+      { mode: "cors" },
+    );
+    return await response.json();
+  } catch (error) {
+    return error.message;
+  }
+}
+
+export { fetchCurrentWeatherData, processCurrentWeatherData, fetchUserCity };

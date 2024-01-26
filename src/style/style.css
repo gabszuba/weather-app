@@ -22,7 +22,6 @@
   --clr-btn-hover: #a5a4cc;
   --clr--toggle--dark: #143642;
   --clr--toggle--light: #B2DBBF;
-  --clr-red: #ea8289;
 }
 
 * {
@@ -269,8 +268,13 @@ label + p {
   flex: 1;
 }
 
+.left-weather-wrapper {
+  display: grid;
+  align-content: center;
+}
+
 .error-msg {
-  color: var(--clr-red);
+  color: var(--clr-font);
   font-weight: var(--fw-bold);
   font-size: var(--fs-500);
   text-align: right;
