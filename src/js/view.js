@@ -94,7 +94,7 @@ const weatherView = (() => {
     updateForecast(weatherDataObject.forecast);
     const weatherIcon = document.querySelector(".weather-icon");
     const imgSource = updateWeatherIcon(weatherDataObject.code, weatherDataObject.isDay);
-    weatherIcon.src = `../src/assets/weather/${imgSource}.svg`;
+    weatherIcon.src = `./assets/weather/${imgSource}.svg`;
     updateWindIcon(weatherDataObject.windDirection);
   }
 
