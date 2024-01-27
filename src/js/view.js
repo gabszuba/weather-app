@@ -29,7 +29,7 @@ const weatherView = (() => {
       minTempElement.textContent = `${weatherDataObject.minTempF}°F`;
       windSpeedElement.textContent = `${weatherDataObject.windMph} (Mph)`;
       forecast.forEach((day, index) => {
-        forecastAvgTempElements[index].textContent = `${day.avgTempC}°F `;
+        forecastAvgTempElements[index].textContent = `${day.avgTempF}°F `;
         forecastMinTempElements[index].textContent = `Min: ${day.minTempF}°F`;
         forecastMaxTempElements[index].textContent = `Max: ${day.maxTempF}°F`;
       });
@@ -43,7 +43,7 @@ const weatherView = (() => {
     minTempElement.textContent = `${weatherDataObject.minTempC}°C`;
     windSpeedElement.textContent = `${weatherDataObject.windKph} (Kph)`;
     forecast.forEach((day, index) => {
-      forecastAvgTempElements[index].textContent = `${day.avgTempF}°C`;
+      forecastAvgTempElements[index].textContent = `${day.avgTempC}°C`;
       forecastMinTempElements[index].textContent = `Min: ${day.minTempC}°C`;
       forecastMaxTempElements[index].textContent = `Max: ${day.maxTempC}°C`;
     });

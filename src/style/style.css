@@ -91,7 +91,7 @@ select {
 }
 
 main {
-  margin: 2rem ;
+  margin: 1rem ;
 }
 
 .search-wrapper {
@@ -125,7 +125,7 @@ main {
 .weather-wrapper {
   display: grid;
   text-align: center;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .localization-info, .localTime{

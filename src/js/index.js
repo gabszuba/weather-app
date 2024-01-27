@@ -12,10 +12,10 @@ async function getUserCity() {
 }
 
 async function main() {
-  const userCity = await getUserCity() || "Montreal";
-  if (userCity) {
-    weatherView.setWeatherDataObject(userCity);
-  }
+  let userCity = await getUserCity();
+  if (!userCity) userCity = "Montreal";
+
+  weatherView.setWeatherDataObject(userCity);
 }
 
 main();
