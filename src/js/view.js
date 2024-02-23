@@ -1,7 +1,7 @@
 import "../style/style.css";
 import { parse, format } from "date-fns";
 import { updateWindIcon, updateWeatherIcon, updateForecast } from "./utils";
-import { getWeatherData } from "./dataController";
+import getWeatherData from "./dataController";
 
 const weatherView = (() => {
   const searchBox = document.querySelector(".search-box");

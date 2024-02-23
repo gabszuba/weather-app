@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,700&display=swap');
+@import url(https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,700&display=swap);
 :root {
   --ff-sans: 'Nunito Sans', sans-serif;
 
@@ -163,27 +163,27 @@ main {
 }
 
 .feelslike-icon {
-  background-image: url('../assets/thermometer.svg');
+  background-image: url(0b9523e3e52248c28c5f.svg);
 }
 
 .wind-speed-icon {
-  background-image: url('../assets/wind-speed.svg');
+  background-image: url(248cf710bdbff1b4ca0b.svg);
 }
 
 .max-temp-icon {
-  background-image: url('../assets/max-temp.svg');
+  background-image: url(a3ee07b341e7ddd2fa69.svg);
 }
 
 .humidity-icon {
-  background-image: url('../assets/humidity.svg');
+  background-image: url(97e92a5a254db9107b59.svg);
 }
 
 .min-temp-icon {
-  background-image: url('../assets/min-temp.svg');
+  background-image: url(5557b577bad3b1b25e89.svg);
 }
 
 .chance-rain-icon {
-  background-image: url('../assets/change-rain.svg');
+  background-image: url(8fee2b9d03da25d6fb40.svg);
 }
 
 .max-temp-icon, .chance-rain-icon, .min-temp-icon,  .wind-direction-icon, .humidity-icon, .feelslike-icon, .wind-speed-icon{
@@ -323,3 +323,5 @@ label + p {
     transform: rotate(360deg);
   }
 }
+
+/*# sourceMappingURL=styles.css.map*/
