@@ -92,7 +92,7 @@ select {
 
 main {
   margin: 1rem ;
-  margin-bottom: 2rem;
+  padding: 2rem;
 }
 
 .search-wrapper {
