@@ -126,8 +126,7 @@ select {
   display: grid;
   text-align: center;
   gap: 1rem;
-  margin: 1.2rem ;
-
+  margin: 1.2rem;
 }
 
 .localization-info, .localTime{
