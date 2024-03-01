@@ -90,11 +90,6 @@ select {
   }
 }
 
-main {
-  margin: 1rem ;
-  padding: 2rem;
-}
-
 .search-wrapper {
   display: flex;
   padding-left: 1rem;
@@ -127,6 +122,8 @@ main {
   display: grid;
   text-align: center;
   gap: 1rem;
+  margin: 2rem ;
+
 }
 
 .localization-info, .localTime{
