@@ -10,7 +10,7 @@
   --fs-500: 1.25rem;
   --fs-600: 1.625rem;
   --fs-900: 2.5rem;
-  --fs-1000: 5rem;
+  --fs-1000: 3rem;
 
   --clr-background:  rgba(68,68,121,1);
   --clr-wrappers:  #313359;
@@ -148,7 +148,7 @@ select {
 
 .left-weather-wrapper, .weather-info-wrapper, .forecast-info-wrapper {
   background-color: var(--clr-wrappers);
-  padding: 3rem;
+  padding: 2.5rem;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   border-radius: .5rem;
 }
